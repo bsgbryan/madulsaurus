@@ -25,9 +25,9 @@ Functional programming is a declarative programming paradigm where programs are 
 
 ## Goals
 
-1. Make testing so easy it's actually fun
-1. Everything should be opt-in
-1. Defining and using maduls should be so simple it feels like cheating
+1. Make testing so easy it's fun
+1. Everything is opt-in
+1. Defining and using maduls is so simple it feels like cheating
 
 ### Fun testing
 
@@ -47,7 +47,7 @@ Mädūl eliminates the need to use mocking/stubbing tools like `jest.spyOn` and 
 
 As an example, consider the Mädūl below:
 
-```typescript title="src/EventManager.ts"
+```typescript title="src/EventQueue.ts"
 export const dependencies = () => ({
   '+Queue': ['pop']
 })
@@ -59,8 +59,8 @@ export const next = ({ handler, pop }) => {
 
 This Mädūl declares a single dependency, and exports one function that uses that dependency. A test for `next` could look something like:
 
-```typescript title="test/EventManager.test.ts"
-import { next } from "../src/EventManager"
+```typescript title="test/EventQueue.test.ts"
+import { next } from "../src/EventQueue"
 
 describe('next', () => {
   it('calls pop to get the next item from the Queue, and passes that to the specified handler', () => {
@@ -104,7 +104,7 @@ Mädūl can:
 * Define, import, initialize, and pass dependencies to your exported functions
 * Define, import, initiaize, and execute decorators (functions that run before and/or after your `async` exported functions)
 
-All of the above is opt-in. You can mix & match traditional `import` statements with the `dependencies` function however works best for you. Only what you specify via the `decorators` function are executed around your code. Functions whose input does not extend Mädūl's `Input` interface are not wrapped or processed in any way.
+All of this is opt-in. You can mix & match traditional `import` statements with the `dependencies` function however works best for you. Only what you specify via the `decorators` function are executed around your code. Functions whose input does not extend Mädūl's `Input` interface are not wrapped or processed in any way.
 
 ### So simple it feels like cheating
 
@@ -114,12 +114,12 @@ export const dependencies = () => ({
 })
 
 export const decorators = () => ({
-  GetMessages: [
+  fetch: [
     '+Auth.validatePermisisons',
     '+UserSettings.applyConfiguredFilters',
     '+API.wrapCall',
   ],
-  SendMessage: [
+  send: [
     '+Auth.validatePermisisons',
     '+Moderator.filterExplicitContent',
     '+API.wrapCall',
@@ -132,11 +132,18 @@ export const send  = async ({ content, post }) => await post({ content })
 
 In the above Mädūl, the `decorators` ensure that:
 
-1. Every call to `GetMessages` is authenticated and authorized - *this is an example of a **before** filter; `validatePermisisons` is called prior to `GetMessages` execution, if it throws an error, `GetMessages` is not called.*
-1. Every call to `GetMessages` runs the message contents through the user's configured filters - *this is an example of an **after** decorator; `applyConfiguredFilters` works on, and can modify, the output from `GetMessages`.*
-1. Every call to `GetMessages` is wrapped in input validation and error handling logic - *in this example, `wrapCall` exports both `before` and `after` functions; meaning it executes both before and after `GetMessages`. If its `before` method throws an error because input does not meet the API's validation requirements (such as specifying a non-existant channel), `GetMessages` does not execute. If the API responds with an error (for example, a 502), `wrapCall` takes over and processes that error.*
-1. Every call to `SendMessage` is authenticated and authorized - *as with `GetMessages`, if `validatePermisisons` thows an error, `SendMessage` does not execute.*
-1. Every call to `SendMessage` runs the message contents through `filterExplicitContent` - *this demonstrates how decorarators can be chained; in this example, `filterExplicitContent` is another **before** decorator. Chained decorators are executed in the order they are specified.*
-1. As with `GetMessages`, every call to `SendMessage` is wrapped with API input and error processing behavior.
+1. *Every call to `fetch` is authenticated and authorized*
+    * This is an example of a **before** filter; `validatePermisisons` is called prior to `fetch` execution, if it throws an error, `fetch` is not called.
+1. *Every call to `fetch` runs the message contents through the user's configured filters*
+    * This is an example of an **after** decorator; `applyConfiguredFilters` works on, and can modify, the output from `fetch`.
+1. *Every call to `fetch` is wrapped in input validation and error handling logic*
+    * `wrapCall` exports both `before` and `after` functions; meaning it executes both before and after `fetch`.
+1. *Every call to `send` is authenticated and authorized*
+    * As with `fetch`, if `validatePermisisons` thows an error, `send` does not execute.
+1. *Every call to `send` runs the message contents through `filterExplicitContent`*
+    * `filterExplicitContent` is another **before** decorator.
+    * Specifying multiple **before**/**after** decorators is called chaining.
+    * Chained decorators are executed in the order they are specified.
+1. *As with `fetch`, every call to `send` is wrapped with API input and error processing behavior.*
 
-This means that the functions MessageManager exports don't have to worry about or duplicate any of the above behvaior or code.
+The functions MessageManager exports don't have to worry about or duplicate any of the behvaior implemented by the `decorators`.

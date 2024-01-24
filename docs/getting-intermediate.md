@@ -86,7 +86,7 @@ import { type Input } from "@bsgbryan/madul"
 
 export const dependencies = () => ({
   '@scoped/package':    ['foo'],
-  ':scopeless-pacakge': ['bar'],
+  ':scopeless-package': ['bar'],
 })
 
 export interface CoolInput extends Input {
