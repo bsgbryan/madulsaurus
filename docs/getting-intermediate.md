@@ -40,7 +40,7 @@ Then, add the following to your TypeSscript config:
     ...
     "paths": {
       ...
-      ":*": ["./nod_modules/*"]
+      ":*": ["./node_modules/*"]
     }
   }
 }
