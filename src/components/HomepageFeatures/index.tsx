@@ -10,32 +10,35 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: "Testing so simple it's fun",
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Mädūl eliminates the need for tools like <code>jest.spyOn</code> and
+        <code>jest.mock</code>. Testing is so simple and frictionless in Mädūl
+        that it's actually fun!
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: "Everything's opt-in",
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        You can adopt Mädūl's features at your own pace -
+        and you can take what you want & leave what you don't;
+        you're never locked-in to anything.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Mädūls give you super-powers',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Tests, decorators, dependencies, and batteries work together to make
+        you so effective when crafting solutions that it feels like you have
+        super-powers.
       </>
     ),
   },
