@@ -55,7 +55,7 @@ export const dependencies = () => ({
   ':is-odd': ['IsOdd']
 })
 
-export interface OddInput extends Input {
+export interface OddInput extends SyncInput {
   IsOdd: CallbableFunction
   value: number
 }
@@ -89,7 +89,7 @@ export const dependencies = () => ({
   ':scopeless-package': ['bar'],
 })
 
-export interface CoolInput extends Input {
+export interface CoolInput extends SyncInput {
   foo: CallableFunction
   bar: CallableFunction
   baz: string
@@ -133,18 +133,21 @@ Mädūl maps the first capitalized item you specify to a dependnecy's default ex
 Every exported function gets `self` passed as a parameter. This is how functions can call each other.
 
 ```typescript title="madul-example/src/Referential.ts"
-import {type Input } from "@bsgbryan/madul"
+import {
+  type InnerSelf,
+  type SyncInput,
+} from "@bsgbryan/madul"
 
-export type Self = {
+export interface Self extends InnerSelf {
   me:     CallableFunction
   myself: CallableFunction
 }
 
-export const me = ({ self }: Input) => {
+export const me = ({ self }: SyncInput) => {
   return `Do you mean ${self.myself()}`
 }
 
-export const myself = ({ self }: Input) => {
+export const myself = ({ self }: SyncInput) => {
   return `Are you looking for ${self.me()}?`
 }
 

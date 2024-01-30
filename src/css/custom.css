@@ -6,25 +6,185 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #7f41d1;
+  --ifm-color-primary-dark: #7130c7;
+  --ifm-color-primary-darker: #6b2dbc;
+  --ifm-color-primary-darkest: #58259a;
+  --ifm-color-primary-light: #8e57d6;
+  --ifm-color-primary-lighter: #9562d9;
+  --ifm-color-primary-lightest: #ac83e1;
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --cta-shadow-opacity: 1;
+  --hero-container-shadow-opacity: .375;
+  --hero-text-shadow-opacity: 1;
+
+  --hero-title-color: #FFE84F;
+
+  --feature-background-gradient: linear-gradient(rgba(172, 131, 225, .05), rgba(172, 131, 225, .1));
+  --feature-shadow-color: rgba(88, 37, 154, .175);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #fab025;
+  --ifm-color-primary-dark: #f9a609;
+  --ifm-color-primary-darker: #ee9e05;
+  --ifm-color-primary-darkest: #c48205;
+  --ifm-color-primary-light: #fbba41;
+  --ifm-color-primary-lighter: #fbbf4f;
+  --ifm-color-primary-lightest: #fccf79;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --cta-shadow-opacity: .375;
+  --hero-container-shadow-opacity: .25;
+  --hero-text-shadow-opacity: 0;
+
+  --hero-title-color: #622B7F;
+
+  --feature-background-gradient: linear-gradient(rgba(255, 232, 79, .0375), rgba(255, 232, 79, .0675));
+  --feature-shadow-color: rgba(0, 0, 0, .175);
+}
+
+.navbar--fixed-top {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+html[data-theme='light'] {
+  background-color: rgb(58, 255, 247);
+}
+
+html[data-theme='light'] .navbar--fixed-top {
+  box-shadow: 0 .0625rem .125rem rgba(64, 64, 64, .25);
+}
+
+html[data-theme='light'].plugin-docs .navbar--fixed-top {
+  background: linear-gradient(rgba(255, 255, 255, .1), rgba(223, 223, 223, .1));
+}
+
+html[data-theme='light']:not(.plugin-docs) .navbar--fixed-top {
+  background: linear-gradient(rgb(58, 255, 247), rgb(26, 223, 195));
+}
+
+main > .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+main > .container .col:first-of-type {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.main-wrapper aside {
+  border-right: none;
+}
+
+.table-of-contents__left-border {
+  border-left: none;
+}
+
+[data-theme='light'] nav.thin-scrollbar {
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 .25rem .5rem rgba(0, 0, 0, .1);
+}
+
+[data-theme='light'] main .col--3 {
+  background-color: rgba(0, 0, 0, 0.025);
+  box-shadow: inset 0 .125rem .25rem rgba(0, 0, 0, .1);
+}
+
+[data-theme='light'] article h1 {
+  color: var(--ifm-color-primary-darkest);
+}
+
+[data-theme='light'] article h2 {
+  color: var(--ifm-color-primary-darker);
+}
+
+[data-theme='light'] article h3 {
+  color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='light'] .main-wrapper {
+  background: linear-gradient(rgb(255, 255, 255), rgb(223, 223, 223));
+}
+
+[data-theme='light'] .footer--dark {
+  background: linear-gradient(#fccf79, #E3BA6D);
+}
+
+[data-theme='light'] .footer--dark .footer__title {
+  color: var(--ifm-color-black);
+}
+
+[data-theme='light'] .footer--dark .footer__link-item {
+  color: #58259a;
+}
+
+[data-theme='light'] .footer__copyright {
+  color: #7f41d1;
+}
+
+html[data-theme='dark'] {
+  background-color: rgb(119, 0, 0);
+}
+
+html[data-theme='dark'].plugin-docs .navbar--fixed-top {
+  box-shadow: 0 .0625rem .125rem rgba(32, 32, 32, .75);
+}
+
+html[data-theme='dark'].plugin-docs .navbar--fixed-top {
+  background: linear-gradient(rgba(64, 64, 64, .25), rgba(32, 32, 32, .25));
+}
+
+html[data-theme='dark']:not(.plugin-docs) .navbar--fixed-top {
+  background: linear-gradient(rgb(119, 0, 0), rgb(87, 0, 0));
+}
+
+[data-theme='dark'] nav.thin-scrollbar {
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 .25rem .5rem rgba(0, 0, 0, .5);
+}
+
+[data-theme='dark'] main .col--3 {
+  background-color: rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 .125rem .25rem rgba(0, 0, 0, .25);
+}
+
+[data-theme='dark'] article h1 {
+  color: var(--ifm-color-primary-lightest);
+}
+
+[data-theme='dark'] article h2 {
+  color: var(--ifm-color-primary-lighter);
+}
+
+[data-theme='dark'] article h3 {
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .main-wrapper {
+  background: linear-gradient(#221138, #1A0D2B);
+}
+
+[data-theme='dark'] .footer--dark {
+  background: linear-gradient(#471F5C, #3D1B4F);
+}
+
+[data-theme='dark'] .footer--dark .footer__title {
+  color: var(--ifm-color-white);
+  text-shadow: 0 1px 1px rgb(32, 32, 32);
+}
+
+[data-theme='dark'] .footer--dark .footer__link-item {
+  color: #fccf79;
+}
+
+[data-theme='dark'] .footer__copyright {
+  color: #fab025;
 }

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Being Advanced
+title: Becoming Advanced
 ---
 
 ## Stuff

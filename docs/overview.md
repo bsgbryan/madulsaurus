@@ -104,7 +104,7 @@ Mädūl can:
 * Define, import, initialize, and pass dependencies to your exported functions
 * Define, import, initiaize, and execute decorators (functions that run before and/or after your `async` exported functions)
 
-All of this is opt-in. You can mix & match traditional `import` statements with the `dependencies` function however works best for you. Only what you specify via the `decorators` function are executed around your code. Functions whose input does not extend Mädūl's `Input` interface are not wrapped or processed in any way.
+All of this is opt-in. You can mix & match traditional `import` statements with the `dependencies` function however works best for you. Only what you specify via the `decorators` function are executed around your code. Functions whose input does not extend Mädūl's `SyncInput` or `AsyncInput` interfaces are not wrapped or processed in any way.
 
 ### So simple it feels like cheating
 
@@ -114,16 +114,26 @@ export const dependencies = () => ({
 })
 
 export const decorators = () => ({
-  fetch: [
-    '+Auth.validatePermisisons',
-    '+UserSettings.applyConfiguredFilters',
-    '+API.wrapCall',
-  ],
-  send: [
-    '+Auth.validatePermisisons',
-    '+Moderator.filterExplicitContent',
-    '+API.wrapCall',
-  ],
+  fetch: {
+    before: {
+      '+Auth': ['validatePermisisons'],
+      '+API':  ['validateParameters'],
+    },
+    after: {
+      '+API':      ['processResponse'],
+      '+Settings': ['applyContentFilters'],
+    },
+  },
+  send: {
+    before: {
+      '+Auth':      ['validatePermisisons'],
+      '+API':       ['validateParameters'],
+      '+Moderator': ['filterExplicitContent'],
+    },
+    after: {
+      '+API': ['processResponse'],
+    },
+  },
 })
 
 export const fetch = async ({ channel, get  }) => await get ({ channel })
@@ -135,7 +145,7 @@ In the above Mädūl, the `decorators` ensure that:
 1. *Every call to `fetch` is authenticated and authorized*
     * This is an example of a **before** filter; `validatePermisisons` is called prior to `fetch` execution, if it throws an error, `fetch` is not called.
 1. *Every call to `fetch` runs the message contents through the user's configured filters*
-    * This is an example of an **after** decorator; `applyConfiguredFilters` works on, and can modify, the output from `fetch`.
+    * This is an example of an **after** decorator; `applyContentFilters` works on, and can modify, the output from `fetch`.
 1. *Every call to `fetch` is wrapped in input validation and error handling logic*
     * `wrapCall` exports both `before` and `after` functions; meaning it executes both before and after `fetch`.
 1. *Every call to `send` is authenticated and authorized*

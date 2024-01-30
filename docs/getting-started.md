@@ -68,7 +68,7 @@ Both code samples below are complete; they can be copy/pasted as-is into your pr
 ```typescript title="madul-example/src/Greeter.ts"
 import { type Input } from "@bsgbryan/madul"
 
-export interface OhaiInput extends Input {
+export interface OhaiInput extends SyncInput {
   person: string
 }
 

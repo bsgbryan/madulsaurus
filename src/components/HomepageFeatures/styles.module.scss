@@ -1,0 +1,46 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+
+  :global .col {
+    &:nth-child(even) {
+      margin-top: -.25rem;
+      margin-bottom: .25rem;
+
+      & > div {
+        box-shadow: 0 .5rem .75rem var(--feature-shadow-color);
+      }
+    }
+
+    &:nth-child(odd) {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      & > div {
+        box-shadow: 0 .25rem .25rem var(--feature-shadow-color);
+      }
+    }
+
+    & > div {
+      border-radius: .25rem;
+      height: 100%;
+      background: var(--feature-background-gradient);
+    }
+  }
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+@media screen and (max-width: 996px) {
+  .features {
+    padding: 8rem 0;
+    & > .container {
+      background-color: black;
+    }
+  }
+}
