@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Overview
+custom_edit_url: null
 ---
 
 ## What is Mädūl?

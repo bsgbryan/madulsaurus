@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Getting Started
+custom_edit_url: null
 ---
 
 ## Initialize
