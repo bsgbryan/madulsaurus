@@ -31,7 +31,7 @@ const FeatureList: FeatureItem[] = [
       <>
         You can adopt Mädūl's features at your own pace -
         and you can take what you want & leave what you don't;
-        you're never locked-in to anything.
+        you're never locked-in to anything
       </>
     ),
   },
@@ -41,7 +41,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Tests, decorators, dependencies, and batteries work together to make
-        you so effective it feels like you've been blasted with <MCULink />!
+        you so effective it feels like you've been blasted with <MCULink />
       </>
     ),
   },
