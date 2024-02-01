@@ -96,7 +96,7 @@ describe('next', () => {
 The example code on this page does not include type definitions. This is done for brevity and to keep focus on the structure and organisation of the code.
 :::
 
-Look Ma, no `jest.*`! 🙌🏻
+Look Ma, no `jest`! 🙌🏻
 
 ### Everything's opt-in
 
@@ -107,7 +107,7 @@ Mädūl can:
 
 All of this is opt-in. You can mix & match traditional `import` statements with the `dependencies` function however works best for you. Only what you specify via the `decorators` function are executed around your code. Functions whose input does not extend Mädūl's `SyncInput` or `AsyncInput` interfaces are not wrapped or processed in any way.
 
-### So simple it feels like cheating
+### Super powers
 
 ```typescript title="MessageManager.ts"
 export const dependencies = () => ({
@@ -118,21 +118,21 @@ export const decorators = () => ({
   fetch: {
     before: {
       '+Auth': ['validatePermisisons'],
-      '+API':  ['validateParameters'],
+      '+API':  ['validateInput'],
     },
     after: {
-      '+API':      ['processResponse'],
+      '+API':      ['handleErrors'],
       '+Settings': ['applyContentFilters'],
     },
   },
   send: {
     before: {
       '+Auth':      ['validatePermisisons'],
-      '+API':       ['validateParameters'],
+      '+API':       ['validateInput'],
       '+Moderator': ['filterExplicitContent'],
     },
     after: {
-      '+API': ['processResponse'],
+      '+API': ['handleErrors'],
     },
   },
 })
@@ -144,17 +144,12 @@ export const send  = async ({ content, post }) => await post({ content })
 In the above Mädūl, the `decorators` ensure that:
 
 1. *Every call to `fetch` is authenticated and authorized*
-    * This is an example of a **before** filter; `validatePermisisons` is called prior to `fetch` execution, if it throws an error, `fetch` is not called.
 1. *Every call to `fetch` runs the message contents through the user's configured filters*
-    * This is an example of an **after** decorator; `applyContentFilters` works on, and can modify, the output from `fetch`.
 1. *Every call to `fetch` is wrapped in input validation and error handling logic*
-    * `wrapCall` exports both `before` and `after` functions; meaning it executes both before and after `fetch`.
 1. *Every call to `send` is authenticated and authorized*
-    * As with `fetch`, if `validatePermisisons` thows an error, `send` does not execute.
 1. *Every call to `send` runs the message contents through `filterExplicitContent`*
-    * `filterExplicitContent` is another **before** decorator.
-    * Specifying multiple **before**/**after** decorators is called chaining.
-    * Chained decorators are executed in the order they are specified.
-1. *As with `fetch`, every call to `send` is wrapped with API input and error processing behavior.*
+1. *Every call to `send` is wrapped with API input and error processing behavior.*
 
 The functions MessageManager exports don't have to worry about or duplicate any of the behvaior implemented by the `decorators`.
+
+It's also extremely clear what happens on every invokation of `fetch` and `send`; anyone working with this Mädūl can see everything that's going on.
