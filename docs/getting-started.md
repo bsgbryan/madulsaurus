@@ -124,7 +124,7 @@ The code below does the following:
 1. Use returned value - *Mädūl functions are just regular functions*
 :::
 
-```bash title="Paste into Bun's repl" showLineNumbers
+```typescript title="Paste into Bun's repl" showLineNumbers
 import madul from "@bsgbryan/madul"
 const greeter = madul('+Greeter')
 const greeting = greeter.ohai({ person: 'Beth' })

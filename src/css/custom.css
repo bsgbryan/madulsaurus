@@ -4,6 +4,29 @@
  * work well for content-centric websites.
  */
 
+.navbar--fixed-top {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+main > .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+main > .container .col:first-of-type {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.main-wrapper aside {
+  border-right: none;
+}
+
+.table-of-contents__left-border {
+  border-left: none;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #7f41d1;
@@ -27,32 +50,9 @@
   --feature-shadow-color: rgba(88, 37, 154, .175);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #fab025;
-  --ifm-color-primary-dark: #f9a609;
-  --ifm-color-primary-darker: #ee9e05;
-  --ifm-color-primary-darkest: #c48205;
-  --ifm-color-primary-light: #fbba41;
-  --ifm-color-primary-lighter: #fbbf4f;
-  --ifm-color-primary-lightest: #fccf79;
-
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-  --cta-shadow-opacity: .375;
-  --hero-container-shadow-opacity: .25;
-  --hero-text-shadow-opacity: 0;
-
-  --hero-title-color: #622B7F;
-
-  --feature-background-gradient: linear-gradient(rgba(255, 232, 79, .0375), rgba(255, 232, 79, .0675));
-  --feature-shadow-color: rgba(0, 0, 0, .175);
-}
-
-.navbar--fixed-top {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
+/*
+  START Light theme styles
+*/
 
 html[data-theme='light'] {
   background-color: rgb(58, 255, 247);
@@ -68,24 +68,6 @@ html[data-theme='light'].plugin-docs .navbar--fixed-top {
 
 html[data-theme='light']:not(.plugin-docs) .navbar--fixed-top {
   background: linear-gradient(rgb(58, 255, 247), rgb(26, 223, 195));
-}
-
-main > .container {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-main > .container .col:first-of-type {
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-}
-
-.main-wrapper aside {
-  border-right: none;
-}
-
-.table-of-contents__left-border {
-  border-left: none;
 }
 
 [data-theme='light'] nav.thin-scrollbar {
@@ -114,6 +96,18 @@ main > .container .col:first-of-type {
   background: linear-gradient(rgb(255, 255, 255), rgb(223, 223, 223));
 }
 
+[data-theme='light'] .alert--success {
+  --ifm-alert-border-color: #00D9E0;
+  --ifm-color-success-contrast-foreground: #185E61;
+  --ifm-color-success-contrast-background: #F2FAFA;
+}
+
+[data-theme='light'] .alert--secondary {
+  --ifm-alert-border-color: rgb(250, 176, 37);
+  --ifm-color-secondary-contrast-foreground: #612B0A;
+  --ifm-color-secondary-contrast-background: #FAF6ED
+}
+
 [data-theme='light'] .footer--dark {
   background: linear-gradient(#fccf79, #E3BA6D);
 }
@@ -128,6 +122,37 @@ main > .container .col:first-of-type {
 
 [data-theme='light'] .footer__copyright {
   color: #7f41d1;
+}
+
+/*
+  END Light theme styles
+*/
+
+
+/*
+  START Dark theme styles
+*/
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #fab025;
+  --ifm-color-primary-dark: #f9a609;
+  --ifm-color-primary-darker: #ee9e05;
+  --ifm-color-primary-darkest: #c48205;
+  --ifm-color-primary-light: #fbba41;
+  --ifm-color-primary-lighter: #fbbf4f;
+  --ifm-color-primary-lightest: #fccf79;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --cta-shadow-opacity: .375;
+  --hero-container-shadow-opacity: .25;
+  --hero-text-shadow-opacity: 0;
+
+  --hero-title-color: #622B7F;
+
+  --feature-background-gradient: linear-gradient(rgba(255, 232, 79, .0375), rgba(255, 232, 79, .0675));
+  --feature-shadow-color: rgba(0, 0, 0, .175);
 }
 
 html[data-theme='dark'] {
@@ -172,6 +197,24 @@ html[data-theme='dark']:not(.plugin-docs) .navbar--fixed-top {
   background: linear-gradient(#221138, #1A0D2B);
 }
 
+[data-theme='dark'] .alert--success {
+  --ifm-alert-border-color: #856B0F;
+  --ifm-color-success-contrast-foreground: #D1C8A9;
+  --ifm-color-success-contrast-background: #383117;
+}
+
+[data-theme='dark'] .alert--secondary {
+  --ifm-alert-border-color: #833085;
+  --ifm-color-secondary-contrast-foreground: #D1B4D1;
+  --ifm-color-secondary-contrast-background: #381438;
+}
+
+[data-theme='dark'] .theme-code-block {
+  --ifm-color-emphasis-300: rgb(8, 8, 8);
+
+  box-shadow: 0 .125rem .125rem rgba(8, 8, 8, .75);
+}
+
 [data-theme='dark'] .footer--dark {
   background: linear-gradient(#471F5C, #3D1B4F);
 }
@@ -188,3 +231,7 @@ html[data-theme='dark']:not(.plugin-docs) .navbar--fixed-top {
 [data-theme='dark'] .footer__copyright {
   color: #fab025;
 }
+
+/*
+  END Light theme styles
+*/
