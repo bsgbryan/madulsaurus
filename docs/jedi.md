@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Going Intermediate
+title: Jedi (Advanced)
 custom_edit_url: null
 ---
 

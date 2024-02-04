@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Becoming Advanced
+title: Jedi Master (In-Depth)
 custom_edit_url: null
 ---
 

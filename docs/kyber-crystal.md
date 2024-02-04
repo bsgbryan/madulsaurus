@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Using Batteries
+title: Kyber Crystal (Batteries)
 custom_edit_url: null
 ---
 

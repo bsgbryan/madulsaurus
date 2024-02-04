@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Overview
+title: Star Map (Overview)
 custom_edit_url: null
 ---
 
