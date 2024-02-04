@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Jedi Master (In-Depth)
+title: Jedi Master (Deep Dive)
 custom_edit_url: null
 ---
 
