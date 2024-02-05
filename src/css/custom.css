@@ -109,7 +109,7 @@ html[data-theme='light']:not(.plugin-docs) .navbar--fixed-top {
 }
 
 [data-theme='light'] .footer--dark {
-  background: linear-gradient(#fccf79, #E3BA6D);
+  background: linear-gradient(#FFFD4F, #FFE84F);
 }
 
 [data-theme='light'] .footer--dark .footer__title {
