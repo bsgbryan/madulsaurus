@@ -4,6 +4,6 @@ title: Jedi Master (Deep Dive)
 custom_edit_url: null
 ---
 
-## Stuff
+## Get ready
 
-Coverage of advanced topics will go here
+Coming soon!
