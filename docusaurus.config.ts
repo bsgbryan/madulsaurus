@@ -78,17 +78,17 @@ const config: Config = {
         {
           title: 'Docs',
           items: [{
-            label: 'Overview',
-            to: '/docs/overview',
+            label: 'Star Map',
+            to: '/docs/star-map',
           }, {
-            label: 'Getting Started',
-            to: '/docs/getting-started',
+            label: 'Padawan',
+            to: '/docs/padawan',
           }, {
-            label: 'Going Intermediate',
-            to: '/docs/going-intermediate',
+            label: 'Jedi',
+            to: '/docs/jedi',
           }, {
-            label: 'Being Advanced',
-            to: '/docs/being-advanced',
+            label: 'Jedi Master',
+            to: '/docs/jedi-master',
           },
           ],
         },
