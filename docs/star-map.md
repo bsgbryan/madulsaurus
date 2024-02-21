@@ -53,7 +53,12 @@ export const dependencies = () => ({
   '+Queue': ['pop']
 })
 
-export const next = ({ handler, pop }) => {
+type NextInput = {
+  handler: CallableFunction
+  pop:     CallableFunction
+}
+
+export const next = ({ handler, pop }: NextInput) => {
   handler({ event: pop() })
 }
 ```
@@ -92,9 +97,6 @@ describe('next', () => {
   })
 })
 ```
-:::note[Regarding type definitions]
-The example code on this page does not include type definitions. This is done for brevity and to keep focus on the structure and organisation of the code.
-:::
 
 Look Ma, no `jest`! 🙌🏻
 
@@ -137,8 +139,21 @@ export const decorators = () => ({
   },
 })
 
-export const fetch = async ({ channel, get  }) => await get ({ channel })
-export const send  = async ({ content, post }) => await post({ content })
+type FetchInput = {
+  channel: string
+  get: CallableFunction
+}
+
+type SendInput = {
+  content: {
+    recipient: string
+    body:      string
+  }
+  post: CallableFunction
+}
+
+export const fetch = async ({ channel, get  }: FetchInput) => await get ({ channel })
+export const send  = async ({ content, post }: SendInput ) => await post({ content })
 ```
 
 In the above Mädūl, the `decorators` ensure that:

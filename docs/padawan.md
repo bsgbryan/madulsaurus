@@ -31,6 +31,8 @@ At its core is the Bun runtime, a fast JavaScript runtime designed as a drop-in 
 
 The bun​ command-line tool also implements a test runner, script runner, and Node.js-compatible package manager, all significantly faster than existing tools and usable in existing Node.js projects with little to no changes necessary.
 
+*Read more at [bun.sh](https://bun.sh)*
+
 ## Your first Mädūl
 
 Let's start small; over the following steps, you'll build a little Mädūl that does its best to greet people 😊
@@ -45,13 +47,11 @@ The `compilerOptions.paths` item is required to Mädūl to work. Below, you'll s
 
 ```json title="madul-example/tsconfig.json"
 {
-  ...
   "extends": [
     "@tsconfig/bun/tsconfig.json",
     "@tsconfig/node-lts/tsconfig.json"
   ],
   "compilerOptions": {
-    ...
     "types": ["bun-types"],
     "paths": {
       "+*": ["./src/*"]
@@ -67,9 +67,7 @@ Both code samples below are complete; they can be copy/pasted as-is into your pr
 :::
 
 ```typescript title="madul-example/src/Greeter.ts"
-import { type Input } from "@bsgbryan/madul"
-
-export interface OhaiInput extends SyncInput {
+type OhaiInput = {
   person: string
 }
 
@@ -79,8 +77,6 @@ export const ohai = ({ person }: OhaiInput) => {
 ```
 
 Mädūl functions are just regular functions. All arguments are passed using an object. This is nice as it makes passing and using arguments easy and descriptive.
-
-All parameters passed to a Mädūl function are read only.
 
 ### Test
 
@@ -101,8 +97,6 @@ describe('Greeter', () => {
 })
 ```
 
-Look Ma, no `jest`! 🤘🏻
-
 Mädūl tests require no external tooling. There's nothing to get in your way when you're validating that your code behaves as required.
 
 ```bash title="Execute test"
@@ -118,10 +112,10 @@ $ bun repl
 :::note
 The code below does the following:
 
-1. Import Mädūl - *This is required to get access to all Mädūl's benefits*
-1. Instantiate the `greeter` Mädūl - *This is where the magic happens*
-1. Call function on `greeter` Mädūl - *This is a wrapped verion of the function defined above*
-1. Use returned value - *Mädūl functions are just regular functions*
+1. Import Mädūl
+1. Instantiate the `greeter` Mädūl
+1. Call function on the `greeter` Mädūl
+1. Use returned value
 :::
 
 ```typescript title="Paste into Bun's repl" showLineNumbers
