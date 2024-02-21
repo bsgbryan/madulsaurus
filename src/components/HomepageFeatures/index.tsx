@@ -40,7 +40,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Tests, decorators, dependencies, and batteries work together to make
+        Tests, decorators, and dependencies work together to make
         you so effective it feels like you've been blasted with <MCULink />
       </>
     ),
