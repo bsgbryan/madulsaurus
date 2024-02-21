@@ -37,3 +37,21 @@
     padding: 2rem;
   }
 }
+
+@media screen and (max-width: 430px) {
+  .heroTitle {
+    font-size: 6rem;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .heroTitle {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .heroTitle {
+    font-size: 4.75rem;
+  }
+}
