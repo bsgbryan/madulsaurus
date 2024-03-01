@@ -113,6 +113,9 @@ const config: Config = {
             //   to: '/blog',
             // },
             {
+              label: 'npm',
+              href: 'https://www.npmjs.com/package/@bsgbryan/madul',
+            }, {
               label: 'GitHub',
               href: 'https://github.com/bsgbryan/madul',
             },
